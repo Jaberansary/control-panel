@@ -11,8 +11,8 @@ type Post = {
 
 const fetchPosts = async (): Promise<Post[]> => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  if(!res.ok){
-    throw new Error('Network response was not ok');
+  if (!res.ok) {
+    throw new Error("Network response was not ok");
   }
   return res.json();
 };

@@ -1,27 +1,24 @@
-"use client"
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Menu from '../components/Menu';
+"use client";
 
-export default function SettingsPage() {
-  const router = useRouter();
-  const userHasAccess = true; 
+import React, { useContext } from "react";
+import { AuthContext } from "../components/ClientProvider";
+import Menu from "../components/Menu";
 
-  useEffect(() => {
-    if (!userHasAccess) {
-      router.push('/list');
-    }
-  }, [userHasAccess, router]);
+const SettingsPage: React.FC = () => {
+  const authContext = useContext(AuthContext);
 
-  if (!userHasAccess) return null;
+  if (!authContext?.isAuthenticated) {
+    return <div>Access denied.</div>;
+  }
 
   return (
     <main className="flex">
-      <Menu canAccessSettings={userHasAccess} />
+      <Menu />
       <div className="flex-1 p-4">
         <h2>Settings</h2>
         <p>Settings content goes here...</p>
       </div>
     </main>
   );
-}
+};
+export default SettingsPage;

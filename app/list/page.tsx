@@ -28,7 +28,7 @@ export default function ListPage() {
 
   return (
     <main className="flex">
-      <Menu canAccessSettings={true} />
+      <Menu />
       <div className="flex-1 p-4">
         <h2>Posts</h2>
         <ul>
